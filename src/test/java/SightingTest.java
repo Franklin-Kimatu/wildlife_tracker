@@ -51,5 +51,16 @@ public class SightingTest {
     }
     //save to assign id to database objects
     @Test
-    public void save
+    public void save_assignsIdToObject(){
+        testSighting.save();
+        Sighting savedSighting = Sighting.all().get(0);
+        assertEquals(testSighting.getId(),savedSighting.getId());
+    }
+    //database returns person with Id
+    @Test
+    public void find_returnsSightingWithSameId_secondSighting(){
+        firstSighting.save();
+        secondSighting.save();
+        assertEquals(Sighting.find(secondSighting.getId()),secondSighting);
+    }
 }
