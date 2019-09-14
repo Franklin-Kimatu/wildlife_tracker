@@ -3,6 +3,8 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
+import java.util.Arrays;
+
 import static org.junit.Assert.*;
 
 public class SightingTest {
@@ -62,5 +64,19 @@ public class SightingTest {
         firstSighting.save();
         secondSighting.save();
         assertEquals(Sighting.find(secondSighting.getId()),secondSighting);
+    }
+
+    //functionality to return all animals in a sighting
+    @Test
+    public void getAnimals_retrievesAllAnimalsFromDatabase_animalList(){
+        testSighting.save();
+        Animal firstAnimal =new Animal("Lion",testSighting.getId());
+        firstAnimal.save();
+        Animal secondAnimal =new Animal("Zebra",testSighting.getId());
+        secondAnimal.save();
+        Animal[] animals = new Animal[]{
+                firstAnimal,secondAnimal
+        };
+        assertTrue(testSighting.getAnimals().containsAll(Arrays.asList(animals)));
     }
 }

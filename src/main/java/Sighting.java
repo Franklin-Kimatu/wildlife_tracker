@@ -56,4 +56,12 @@ public class Sighting {
             return sighting;
         }
     }
+    public List<Animal> getAnimals(){
+        try(Connection con =DB.sql2o.open()){
+            String sql ="SELECT * FROM animals where sightingId =:Id";
+            return con.createQuery(sql)
+                    .addParameter("id",this.id)
+                    .executeAndFetch(Animal.class);
+        }
+    }
 }
