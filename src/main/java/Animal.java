@@ -2,15 +2,15 @@ import org.sql2o.*;
 
 import java.util.List;
 
-public class Animal {
+public abstract class Animal {
 
-    private String animalname;
-    private int sightingId;
-    private int id;
-    public Animal(String animalname,int sightingId){
-        this.animalname =animalname;
-        this.sightingId =sightingId;
-    }
+    public String animalname;
+    public int sightingId;
+    public int id;
+//    public Animal(String animalname,int sightingId){
+//        this.animalname =animalname;
+//        this.sightingId =sightingId;
+//    }
     public String getAnimalName(){
         return animalname;
     }
