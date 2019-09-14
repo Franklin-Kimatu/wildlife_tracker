@@ -1,11 +1,13 @@
-import org.junit.*;
-import static org.junit.Assert.*;
+
 import org.sql2o.*;
+
+import java.util.List;
 
 public class Sighting {
 
     private String location;
     private String rangername;
+    private int id;
 
     public Sighting(String location, String rangername){
         this.location =location;
@@ -27,6 +29,19 @@ public class Sighting {
             Sighting newSighting = (Sighting) otherSighting;
             return this.getLocation().equals(newSighting.getLocation()) &&
                     this.getRangerName().equals(newSighting.getRangerName());
+        }
+    }
+
+    public  void save(){
+        try(Connection con = DB.sql2o.open()){
+            String sql = "INSERT INTO sightings (location,rangername) VALUES(:location,:rangername)";
+            con.createQuery(sql).addParameter("location",this.location).addParameter("rangername",this.rangername).executeUpdate();
+        }
+    }
+    public static List<Sighting>all(){
+        String sql = "SELECT * FROM sightings";
+        try(Connection con = DB.sql2o.open()){
+            return con.createQuery(sql).executeAndFetch(Sighting.class);
         }
     }
 }

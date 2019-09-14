@@ -1,10 +1,13 @@
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class SightingTest {
+    @Rule
+    public DatabaseRule database = new DatabaseRule();
     Sighting testSighting = new Sighting("ZoneOne","Frank");
     Sighting firstSighting = new Sighting("ZoneOne","Frank");
     Sighting secondSighting = new Sighting("ZoneOne","Frank");
@@ -36,5 +39,17 @@ public class SightingTest {
     @Test
     public void save_insertsObjectIntoDb_Sighting(){
         testSighting.save();
+        assertTrue(Sighting.all().get(0).equals(testSighting));
     }
+    // returning all entries inthe database
+    @Test
+    public void all_returnsAllInstancesOfPerson_true(){
+        firstSighting.save();
+        secondSighting.save();
+        assertEquals(true,Sighting.all().get(0).equals(firstSighting));
+        assertEquals(true,Sighting.all().get(1).equals(secondSighting));
+    }
+    //save to assign id to database objects
+    @Test
+    public void save
 }
