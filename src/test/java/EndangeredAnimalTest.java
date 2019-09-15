@@ -1,10 +1,13 @@
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
-
+import org.sql2o.*;
 import static org.junit.Assert.*;
 
 public class EndangeredAnimalTest {
+    @Rule
+    public DatabaseRule database = new DatabaseRule();
 
     @Before
     public void setUp() throws Exception {
@@ -13,68 +16,70 @@ public class EndangeredAnimalTest {
     @After
     public void tearDown() throws Exception {
     }
-    Animal testAnimal = new Animal("Lion",1);
-    Animal testAnotherAnimal = new Animal("Lion",1);
-    Animal firstAnimal = new Animal("Lion",1);
-    Animal secondAnimal = new Animal("Zebra",2);
+    EndangeredAnimal testEndangeredAnimal = new EndangeredAnimal("Lion",1);
+    EndangeredAnimal testAnotherEndangeredAnimal = new EndangeredAnimal("Lion",1);
+    EndangeredAnimal firstEndangeredAnimal = new EndangeredAnimal("Lion",1);
+    EndangeredAnimal secondEndangeredAnimal = new EndangeredAnimal("Zebra",3);
+
+    Sighting testSighting = new Sighting("ZoneOne","Frank");
 
     @Test
     public void animal_instantiatesCorrectly_true(){
-        assertEquals(true,testAnimal instanceof Animal);
+        assertEquals(true,testEndangeredAnimal instanceof EndangeredAnimal);
     }
 
     @Test
-    public void getAnimalName_getAnimalNamesInSighting(){
-        assertEquals("Lion",testAnimal.getAnimalName());
+    public void endangeredAnimal_instantiatesWithName_String(){
+        assertEquals("Lion",testEndangeredAnimal.getAnimalName());
     }
     @Test
-    public void getSightingId_animalHasSightingId(){
-        assertEquals(1,testAnimal.getSightingId());
+    public void endangeredAnimal_animalHasSightingId_int(){
+        assertEquals(1,testEndangeredAnimal.getSightingId());
     }
     @Test
     public void equals_returnsTrueIfNameAndPersonAreSame_true1(){
-        assertTrue(testAnimal.equals(testAnotherAnimal));
+        assertTrue(testEndangeredAnimal.equals(testAnotherEndangeredAnimal));
     }
 
     //saving monster to database
     @Test
     public void save_returnIfDescriptionAreTheSame(){
-        testAnimal.save();
-        assertTrue(Animal.all().get(0).equals(testAnimal));
+        testEndangeredAnimal.save();
+        assertTrue(EndangeredAnimal.all().get(0).equals(testEndangeredAnimal));
     }
 
     //setting the animal id
     @Test
-    public void save_assignsIdToMonster(){
-        testAnimal.save();
-        Animal savedAnimal= Animal.all().get(0);
-        assertEquals(savedAnimal.getId(),testAnimal.getId());
+    public void save_assignsIdToEndangeredAnimal(){
+        testEndangeredAnimal.save();
+        EndangeredAnimal savedEndangeredAnimal= (EndangeredAnimal)EndangeredAnimal.all().get(0);
+        assertEquals(savedEndangeredAnimal.getId(),testEndangeredAnimal.getId());
     }
     // returning all enteries in the database
     @Test
     public void all_returnsAllInstancesOfMonster_true(){
-        firstAnimal.save();
-        secondAnimal.save();
-        assertEquals(true,Animal.all().get(0).equals(firstAnimal));
-        assertEquals(true,Animal.all().get(1).equals(secondAnimal));
+        firstEndangeredAnimal.save();
+        secondEndangeredAnimal.save();
+        assertEquals(true,EndangeredAnimal.all().get(0).equals(firstEndangeredAnimal));
+        assertEquals(true,EndangeredAnimal.all().get(1).equals(secondEndangeredAnimal));
     }
     //finding animals by id
     @Test
     public void find_returnAnimalsWithSameId_secondAnimal(){
-        Animal firstAnimal = new Animal("Lion",1);
-        firstAnimal.save();
-        Animal secondAnimal = new Animal("Zebra",2);
-        secondAnimal.save();
-        assertEquals(Animal.find(secondAnimal.getId()),secondAnimal);
+        EndangeredAnimal firstEndangeredAnimal = new EndangeredAnimal("Lion",1);
+        firstEndangeredAnimal.save();
+        EndangeredAnimal secondEndangeredAnimal = new EndangeredAnimal("Zebra",3);
+        secondEndangeredAnimal.save();
+        assertEquals(EndangeredAnimal.find(secondEndangeredAnimal.getId()),secondEndangeredAnimal);
     }
 
-    //association of anima to sighting
+    //association of animal to sighting
     @Test
     public void save_savesSightingIdIntoDB_true(){
         testSighting.save();
-        Animal testAnimal =new Animal("Lion",testSighting.getId());
-        testAnimal.save();
-        Animal savedAnimal = Animal.find(testAnimal.getId());
-        assertEquals(savedAnimal.getSightingId(),testSighting.getId());
+        EndangeredAnimal testEndangeredAnimal =new EndangeredAnimal("Lion",testSighting.getId());
+        testEndangeredAnimal.save();
+        EndangeredAnimal savedEndangeredAnimal = (EndangeredAnimal) EndangeredAnimal.find(testEndangeredAnimal.getId());
+        assertEquals(savedEndangeredAnimal.getSightingId(),testSighting.getId());
     }
 }
