@@ -7,10 +7,7 @@ public abstract class Animal {
     public String animalname;
     public int sightingId;
     public int id;
-//    public Animal(String animalname,int sightingId){
-//        this.animalname =animalname;
-//        this.sightingId =sightingId;
-//    }
+    public String type;
     public String getAnimalName(){
         return animalname;
     }
@@ -31,8 +28,8 @@ public abstract class Animal {
     //saving animals to database
     public void save(){
         try(Connection con = DB.sql2o.open()){
-            String sql ="INSERT INTO animals(animalname,sightingId) VALUES (:animalname,:sightingId)";
-            this.id =(int)con.createQuery(sql,true).addParameter("animalname",this.animalname).addParameter("sightingId",this.sightingId).executeUpdate().getKey();
+            String sql ="INSERT INTO animals(animalname,sightingId,type) VALUES (:animalname,:sightingId,:type)";
+            this.id =(int)con.createQuery(sql,true).addParameter("animalname",this.animalname).addParameter("sightingId",this.sightingId).addParameter("type",this.type).executeUpdate().getKey();
         }
     }
     public int getId(){
