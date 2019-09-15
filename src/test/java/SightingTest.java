@@ -72,7 +72,7 @@ public class SightingTest {
         testSighting.save();
         ThrivingAnimal firstAnimal =new ThrivingAnimal("Lion",testSighting.getId());
         firstAnimal.save();
-        EndangeredAnimal secondAnimal =new EndangeredAnimal("Zebra",testSighting.getId());
+        EndangeredAnimal secondAnimal =new EndangeredAnimal("Zebra",testSighting.getId(),"okay","adult");
         secondAnimal.save();
         Object[] animals = new Object[]{
                 firstAnimal,secondAnimal
