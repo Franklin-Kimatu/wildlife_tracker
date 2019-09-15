@@ -16,10 +16,10 @@ public class EndangeredAnimalTest {
     @After
     public void tearDown() throws Exception {
     }
-    EndangeredAnimal testEndangeredAnimal = new EndangeredAnimal("Lion",1);
-    EndangeredAnimal testAnotherEndangeredAnimal = new EndangeredAnimal("Lion",1);
-    EndangeredAnimal firstEndangeredAnimal = new EndangeredAnimal("Lion",1);
-    EndangeredAnimal secondEndangeredAnimal = new EndangeredAnimal("Zebra",3);
+    EndangeredAnimal testEndangeredAnimal = new EndangeredAnimal("Lion",1,"healthy","newborn");
+    EndangeredAnimal testAnotherEndangeredAnimal = new EndangeredAnimal("Lion",1,"healthy","newborn");
+    EndangeredAnimal firstEndangeredAnimal = new EndangeredAnimal("Lion",1,"healthy","newborn");
+    EndangeredAnimal secondEndangeredAnimal = new EndangeredAnimal("Zebra",3,"okay","adult");
 
     Sighting testSighting = new Sighting("ZoneOne","Frank");
 
@@ -35,6 +35,14 @@ public class EndangeredAnimalTest {
     @Test
     public void endangeredAnimal_animalHasSightingId_int(){
         assertEquals(1,testEndangeredAnimal.getSightingId());
+    }
+    @Test
+    public void endangeredAnimal_hasAStateOfHealth(){
+        assertEquals("healthy",testEndangeredAnimal.getEndangeredHealth());
+    }
+    @Test
+    public void endangeredAnimal_hasACertainAge(){
+        assertEquals("newborn",testEndangeredAnimal.getEndangeredAge());
     }
     @Test
     public void equals_returnsTrueIfNameAndPersonAreSame_true1(){
@@ -66,9 +74,9 @@ public class EndangeredAnimalTest {
     //finding animals by id
     @Test
     public void find_returnAnimalsWithSameId_secondAnimal(){
-        EndangeredAnimal firstEndangeredAnimal = new EndangeredAnimal("Lion",1);
+        EndangeredAnimal firstEndangeredAnimal = new EndangeredAnimal("Lion",1,"healthy","newborn");
         firstEndangeredAnimal.save();
-        EndangeredAnimal secondEndangeredAnimal = new EndangeredAnimal("Zebra",3);
+        EndangeredAnimal secondEndangeredAnimal = new EndangeredAnimal("Zebra",3,"okay","adult");
         secondEndangeredAnimal.save();
         assertEquals(EndangeredAnimal.find(secondEndangeredAnimal.getId()),secondEndangeredAnimal);
     }
@@ -77,7 +85,7 @@ public class EndangeredAnimalTest {
     @Test
     public void save_savesSightingIdIntoDB_true(){
         testSighting.save();
-        EndangeredAnimal testEndangeredAnimal =new EndangeredAnimal("Lion",testSighting.getId());
+        EndangeredAnimal testEndangeredAnimal =new EndangeredAnimal("Lion",testSighting.getId(),"healthy","newborn");
         testEndangeredAnimal.save();
         EndangeredAnimal savedEndangeredAnimal = (EndangeredAnimal) EndangeredAnimal.find(testEndangeredAnimal.getId());
         assertEquals(savedEndangeredAnimal.getSightingId(),testSighting.getId());
