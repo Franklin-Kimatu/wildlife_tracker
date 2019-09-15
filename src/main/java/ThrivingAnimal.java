@@ -13,6 +13,14 @@ public class ThrivingAnimal extends Animal{
         type = DATABASE_TYPE;
     }
 
+    public static ThrivingAnimal find(int id){
+        try(Connection con =DB.sql2o.open()){
+            String sql ="SELECT * FROM animals where id =:id";
+            ThrivingAnimal animal =con.createQuery(sql).addParameter("id",id).executeAndFetchFirst(ThrivingAnimal.class);
+            return animal;
+        }
+    }
+
     public static List<ThrivingAnimal> all(){
         String sql ="SELECT * FROM animals WHERE type ='thriving'";
         try(Connection con =DB.sql2o.open()){
