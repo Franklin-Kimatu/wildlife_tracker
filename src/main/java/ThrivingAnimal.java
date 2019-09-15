@@ -16,7 +16,9 @@ public class ThrivingAnimal extends Animal{
     public static ThrivingAnimal find(int id){
         try(Connection con =DB.sql2o.open()){
             String sql ="SELECT * FROM animals where id =:id";
-            ThrivingAnimal animal =con.createQuery(sql).addParameter("id",id).executeAndFetchFirst(ThrivingAnimal.class);
+            ThrivingAnimal animal =con.createQuery(sql).addParameter("id",id)
+                    .throwOnMappingFailure(false)
+                    .executeAndFetchFirst(ThrivingAnimal.class);
             return animal;
         }
     }
@@ -24,7 +26,9 @@ public class ThrivingAnimal extends Animal{
     public static List<ThrivingAnimal> all(){
         String sql ="SELECT * FROM animals WHERE type ='thriving'";
         try(Connection con =DB.sql2o.open()){
-            return con.createQuery(sql).executeAndFetch(ThrivingAnimal.class);
+            return con.createQuery(sql)
+                    .throwOnMappingFailure(false)
+                    .executeAndFetch(ThrivingAnimal.class);
         }
     }
 }

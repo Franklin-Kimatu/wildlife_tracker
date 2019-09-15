@@ -4,10 +4,12 @@ import java.util.List;
 
 public abstract class Animal {
 
-    public String animalname;
-    public int sightingId;
-    public int id;
-    public String type;
+     String animalname;
+     int sightingId;
+     int id;
+     String type;
+    String health;
+    String age;
     public String getAnimalName(){
         return animalname;
     }
@@ -28,8 +30,15 @@ public abstract class Animal {
     //saving animals to database
     public void save(){
         try(Connection con = DB.sql2o.open()){
-            String sql ="INSERT INTO animals(animalname,sightingId,type) VALUES (:animalname,:sightingId,:type)";
-            this.id =(int)con.createQuery(sql,true).addParameter("animalname",this.animalname).addParameter("sightingId",this.sightingId).addParameter("type",this.type).executeUpdate().getKey();
+            String sql ="INSERT INTO animals(animalname,sightingId,type,health,age) VALUES (:animalname,:sightingId,:type,:health,:age)";
+            this.id =(int)con.createQuery(sql,true)
+                    .addParameter("animalname",this.animalname)
+                    .addParameter("sightingId",this.sightingId)
+                    .addParameter("type",this.type)
+                    .addParameter("health",this.health)
+                    .addParameter("age",this.age)
+                    .executeUpdate()
+                    .getKey();
         }
     }
     public int getId(){
@@ -42,12 +51,12 @@ public abstract class Animal {
 //            return con.createQuery(sql).executeAndFetch(Animal.class);
 //        }
 //    }
-    public static Animal find(int id){
-        try(Connection con=DB.sql2o.open()){
-            String sql = "SELECT * FROM animals where id =:id";
-            Animal animal =con.createQuery(sql).addParameter("id",id).executeAndFetchFirst(Animal.class);
-            return animal;
-        }
-    }
+//    public static Animal find(int id){
+//        try(Connection con=DB.sql2o.open()){
+//            String sql = "SELECT * FROM animals where id =:id";
+//            Animal animal =con.createQuery(sql).addParameter("id",id).executeAndFetchFirst(Animal.class);
+//            return animal;
+//        }
+//    }
 
 }
