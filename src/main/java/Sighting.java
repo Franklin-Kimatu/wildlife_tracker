@@ -1,6 +1,7 @@
 
 import org.sql2o.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Sighting {
@@ -56,12 +57,17 @@ public class Sighting {
             return sighting;
         }
     }
-    public List<Animal> getAnimals(){
+    public List<Object> getAnimals(){
+        List<Object> allAnimals = new ArrayList<Object>();
         try(Connection con =DB.sql2o.open()){
-            String sql ="SELECT * FROM animals where sightingId =:id";
-            return con.createQuery(sql)
-                    .addParameter("id",this.id)
-                    .executeAndFetch(Animal.class);
+            String sqlThriving ="SELECT * FROM animals where sightingId =:id AND type ='thriving';";
+            List<ThrivingAnimal> thrivingAnimals = con.createQuery(sqlThriving).addParameter("id",this.id).executeAndFetch(ThrivingAnimal.class);
+            allAnimals.addAll(thrivingAnimals);
+
+            String sqlEndangered ="SELECT * FROM animals WHERE sightingId =:id AND type='endangered';";
+            List<EndangeredAnimal> endangeredAnimals = con.createQuery(sqlEndangered).addParameter("id",this.id).executeAndFetch(EndangeredAnimal.class);
+            allAnimals.addAll(endangeredAnimals);
         }
+        return allAnimals;
     }
 }
