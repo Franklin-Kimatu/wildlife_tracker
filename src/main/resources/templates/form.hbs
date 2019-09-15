@@ -7,25 +7,50 @@
             <label for="rangername">Ranger's Name</label>
         </div>
         <div class="md-form">
-            <i class="fas fa-map-marker-alt prefix"></i>
-            <input type="text" id="ranger" class="form-control">
-            <label for="ranger">E-mail address</label>
+<!--            <i class="fas fa-map-marker-alt prefix"></i>-->
+            <select class="mdb-select md-form" name="location" id="location">
+            <option value="" disabled selected>Location of Sighting from main office</option>
+            <option value="North">North</option>
+            <option value="South">South </option>
+            <option value="Uphill">Uphill</option>
+            <option value="Plateau">Plateau</option>
+            <option value="West">West</option>
+            <option value="East">East</option>
+            </select>
         </div>
         <div class="md-form">
-            <i class="fas fa-user prefix"></i>
-            <input type="text" id="inputIconEx2" class="form-control">
-            <label for="inputIconEx2">E-mail address</label>
+<!--            <i class="fas fa-user prefix"></i>-->
+            <input type="text" id="animalname" name="animalname" class="form-control">
+            <label for="animalname">Animal's Name</label>
         </div>
         <div class="md-form">
-            <i class="fas fa-user prefix"></i>
-            <input type="text" id="inputIconEx2" class="form-control">
-            <label for="inputIconEx2">E-mail address</label>
+<!--            <i class="fas fa-user prefix"></i>-->
+            <select class="mdb-select md-form" name="age" id="age">
+                <option value="" disabled selected>Estimate animal's age</option>
+                <option value="New born">New born</option>
+                <option value="Young">Young</option>
+                <option value="Adult">Adult</option>
+            </select>
         </div>
         <div class="md-form">
-            <i class="fas fa-user prefix"></i>
-            <input type="text" id="inputIconEx2" class="form-control">
-            <label for="inputIconEx2">E-mail address</label>
+<!--            <i class="fas fa-user prefix"></i>-->
+            <select class="mdb-select md-form" name="health" id="health">
+                <option value="" disabled selected>Estimate animal's health</option>
+                <option value="Ill">Ill</option>
+                <option value="Okay">Okay</option>
+                <option value="Healthy">Healthy</option>
+            </select>
         </div>
+        <div class="md-form">
+<!--            <i class="fas fa-user prefix"></i>-->
+            <select class="mdb-select md-form" name="type" id="type">
+                <option value="" disabled selected>Animal Species</option>
+                <option value="Thriving Species">Thriving Species</option>
+                <option value="Endangered Species">Endangered Species</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-success">Submit</button>
     </form>
 
 {{/partial}}
