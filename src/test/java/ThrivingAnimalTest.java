@@ -6,13 +6,15 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class ThrivingAnimalTest {
-    @Rule DatabaseRule database = new DatabaseRule();
+    @Rule
+    public DatabaseRule database = new DatabaseRule();
 
-    Animal testAnimal = new Animal("Lion",1);
-    Animal testAnotherAnimal = new Animal("Lion",1);
-    Animal firstAnimal = new Animal("Lion",1);
-    Animal secondAnimal = new Animal("Zebra",2);
+    ThrivingAnimal testThrivingAnimal = new ThrivingAnimal("Lion",1);
+    ThrivingAnimal testAnotherThrivingAnimal = new ThrivingAnimal("Lion",1);
+    ThrivingAnimal firstThrivingAnimal = new ThrivingAnimal("Lion",1);
+    ThrivingAnimal secondThrivingAnimal = new ThrivingAnimal("Zebra",3);
 
+    Sighting testSighting = new Sighting("ZoneOne","Frank");
 
     @Before
     public void setUp() throws Exception {
@@ -22,62 +24,63 @@ public class ThrivingAnimalTest {
     public void tearDown() throws Exception {
     }
     @Test
-    public void animal_instantiatesCorrectly_true(){
-        assertEquals(true,testAnimal instanceof Animal);
+    public void thrivingAnimal_instantiatesCorrectly_true(){
+        assertEquals(true,testThrivingAnimal instanceof ThrivingAnimal);
     }
 
     @Test
     public void getAnimalName_getAnimalNamesInSighting(){
-        assertEquals("Lion",testAnimal.getAnimalName());
+        assertEquals("Lion",testThrivingAnimal.getAnimalName());
     }
     @Test
     public void getSightingId_animalHasSightingId(){
-        assertEquals(1,testAnimal.getSightingId());
+        assertEquals(1,testThrivingAnimal.getSightingId());
     }
     @Test
     public void equals_returnsTrueIfNameAndPersonAreSame_true1(){
-        assertTrue(testAnimal.equals(testAnotherAnimal));
+        assertTrue(testThrivingAnimal.equals(testAnotherThrivingAnimal));
     }
 
     //saving monster to database
     @Test
     public void save_returnIfDescriptionAreTheSame(){
-        testAnimal.save();
-        assertTrue(Animal.all().get(0).equals(testAnimal));
+        testThrivingAnimal.save();
+        assertTrue(ThrivingAnimal.all().get(0).equals(testThrivingAnimal));
     }
 
     //setting the animal id
     @Test
     public void save_assignsIdToMonster(){
-        testAnimal.save();
-        Animal savedAnimal= Animal.all().get(0);
-        assertEquals(savedAnimal.getId(),testAnimal.getId());
+        testThrivingAnimal.save();
+        ThrivingAnimal savedThrivingAnimal= (ThrivingAnimal)ThrivingAnimal.all().get(0);
+        assertEquals(savedThrivingAnimal.getId(),testThrivingAnimal.getId());
     }
     // returning all enteries in the database
     @Test
     public void all_returnsAllInstancesOfMonster_true(){
-        firstAnimal.save();
-        secondAnimal.save();
-        assertEquals(true,Animal.all().get(0).equals(firstAnimal));
-        assertEquals(true,Animal.all().get(1).equals(secondAnimal));
+        firstThrivingAnimal.save();
+        secondThrivingAnimal.save();
+        assertEquals(true,ThrivingAnimal.all().get(0).equals(firstThrivingAnimal));
+        assertEquals(true,ThrivingAnimal.all().get(1).equals(secondThrivingAnimal));
     }
     //finding animals by id
     @Test
     public void find_returnAnimalsWithSameId_secondAnimal(){
-        Animal firstAnimal = new Animal("Lion",1);
-        firstAnimal.save();
-        Animal secondAnimal = new Animal("Zebra",2);
-        secondAnimal.save();
-        assertEquals(Animal.find(secondAnimal.getId()),secondAnimal);
+        ThrivingAnimal firstThrivingAnimal = new ThrivingAnimal("Lion",1);
+        firstThrivingAnimal.save();
+        ThrivingAnimal secondThrivingAnimal = new ThrivingAnimal("Zebra",3);
+        secondThrivingAnimal.save();
+        assertEquals(ThrivingAnimal.find(secondThrivingAnimal.getId()),secondThrivingAnimal);
     }
 
     //association of anima to sighting
     @Test
     public void save_savesSightingIdIntoDB_true(){
+        Sighting testSighting = new Sighting("ZoneOne","Frank");
         testSighting.save();
-        Animal testAnimal =new Animal("Lion",testSighting.getId());
-        testAnimal.save();
-        Animal savedAnimal = Animal.find(testAnimal.getId());
-        assertEquals(savedAnimal.getSightingId(),testSighting.getId());
+        ThrivingAnimal testThrivingAnimal =new ThrivingAnimal("Lion",testSighting.getId());
+        testThrivingAnimal.save();
+        ThrivingAnimal savedThrivingAnimal= (ThrivingAnimal) ThrivingAnimal.find(testThrivingAnimal.getId());
+        assertEquals(savedThrivingAnimal.getSightingId(),testSighting.getId());
     }
 }
