@@ -40,7 +40,10 @@ public class Sighting {
         try(Connection con = DB.sql2o.open()){
             String sql = "INSERT INTO sightings (location,rangername) VALUES(:location,:rangername)";
             this.id =(int)con.createQuery(sql,true)
-            .addParameter("location",this.location).addParameter("rangername",this.rangername).executeUpdate().getKey();
+            .addParameter("location",this.location)
+                    .addParameter("rangername",this.rangername)
+                    .executeUpdate()
+                    .getKey();
         }
     }
     public static List<Sighting>all(){

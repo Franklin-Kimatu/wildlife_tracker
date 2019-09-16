@@ -1,5 +1,57 @@
-<p>{{rangername}}</p>
-<p>{{location}}</p>
-<p>{{animalname}}</p>
-<p>{{age}}</p>
-<p>{{type}}</p>
+<!--{{#partial "content"}}-->
+<!--   {{#if animalname}}-->
+<!--       <p>{{rangername}}</p>-->
+<!--       <p>{{location}}</p>-->
+<!--       <p>{{animalname}}</p>-->
+<!--       <p>{{age}}</p>-->
+<!--       <p>{{type}}</p>-->
+<!--   {{/if}}-->
+<!--{{/partial}}-->
+<!--{{>layout.hbs}}-->
+
+
+{{#partial "content"}}
+    <h1>Recorded Sightings</h1>
+    <br>
+    <br>
+    <table class="table table-dark">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Ranger's Name</th>
+            <th scope="col">Location</th>
+            <th scope="col">Animal Name</th>
+            <th scope="col">Animal Age</th>
+            <th scope="col">Animal Health</th>
+            <th scope="col">Animal Species</th>
+            <th scope="col">Time of sighting</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each sightings}}
+            <tr>
+                <!--Ranger's Name-->
+                <td>{{rangername}}</td>
+
+                <!--Location of Sighting-->
+                <td>{{location}}</td>
+
+                <!--Animal's Name-->
+
+                <td>{{animalname}}</td>
+
+                <!--Animal's Age-->
+                <td>{{animal.age}}</td>
+
+                <!--Animal's Health-->
+                <td>{{animal.health}}</td>
+
+                <!--Animal's Species-->
+                <td>{{animal.type}}</td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+{{/partial}}
+
+{{>layout.hbs}}
+

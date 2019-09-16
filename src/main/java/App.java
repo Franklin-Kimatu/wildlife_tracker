@@ -19,13 +19,19 @@ public class App {
             return new ModelAndView(model,"form.hbs");
         },new HandlebarsTemplateEngine());
 
-        post("/animals",(request, response) -> {
+
+
+        post("/display",(request, response) -> {
             Map<String,Object>model = new HashMap<>();
             String rangername =request.queryParams("rangername");
             String location = request.queryParams("location");
             String animalname = request.queryParams("animalname");
-            String age =request.queryParams("age");
             String health = request.queryParams("health");
+            String age =request.queryParams("age");
+            System.out.println(animalname);
+            System.out.println(health);
+            System.out.println(age);
+
             String type = request.queryParams("type");
             if (type.equals("thriving")){
                 ThrivingAnimal thrivingAnimal = new ThrivingAnimal(animalname,1);
@@ -47,12 +53,32 @@ public class App {
             return new ModelAndView(model,"display.hbs");
         },new HandlebarsTemplateEngine());
 
-        get("/animals",(request, response) -> {
+        get("/display",(request, response) -> {
             Map<String,Object>model = new HashMap<>();
             model.put("sightings",Sighting.all());
             model.put("thrivingAnimal",ThrivingAnimal.all());
             model.put("endangeredAnimal",EndangeredAnimal.all());
             return new ModelAndView(model,"display.hbs");
         },new HandlebarsTemplateEngine());
+
+
+//        get("/form",(request, response) -> {
+//            Map<String,Object>model = new HashMap<>();
+//            return new ModelAndView(model,"form.hbs");
+//        }, new HandlebarsTemplateEngine());
+////
+//        get("/new/animal",(request, response) -> {
+//            Map<String,Object>model = new HashMap<>();
+//            String animalname = request.queryParams("animalname");
+//            String health =request.queryParams("health");
+//            String age =request.queryParams("age");
+//            String rangername = request.queryParams("rangername");
+//            model.put("age",age);
+//            model.put("health",health);
+//            model.put("animalname",animalname);
+//            model.put("rangername",rangername);
+//            return  new ModelAndView(model,"display.hbs");
+//        },new HandlebarsTemplateEngine());
+
     }
 }

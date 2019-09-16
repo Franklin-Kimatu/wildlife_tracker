@@ -1,57 +1,46 @@
 {{#partial "content"}}
+    <form action="/display" method="post" >
+        <label for="rangername">Ranger Name:</label>
+        <input class="form-control" type="text" name="rangername" id="rangername" placeholder="Ranger's Name">
+        <br>
+        <label for="location">Location</label>
+        <select class="form-control" name="location">
+            <option selected disabled>Location</option>
+            <option value="Zone one">Zone one</option>
+            <option value="Zone two">Zone two</option>
+            <option value="Zone three">Zone three</option>
+        </select>
+        <br>
+        <label for="animalname">Animal name</label>
+        <input class="form-control" type="text" id="animalname" name="animalname">
+        <br>
 
-    <form action="/animals">
-        <div class="md-form">
-            <i class="fas fa-user prefix"></i>
-            <input type="text" id="rangername" name="rangername" class="form-control">
-            <label for="rangername">Ranger's Name</label>
-        </div>
-        <div class="md-form">
-<!--            <i class="fas fa-map-marker-alt prefix"></i>-->
-            <select class="mdb-select md-form" name="location" id="location">
-            <option value="" disabled selected>Location of Sighting from main office</option>
-            <option value="North">North</option>
-            <option value="South">South </option>
-            <option value="Uphill">Uphill</option>
-            <option value="Plateau">Plateau</option>
-            <option value="West">West</option>
-            <option value="East">East</option>
-            </select>
-        </div>
-        <div class="md-form">
-<!--            <i class="fas fa-user prefix"></i>-->
-            <input type="text" id="animalname" name="animalname" class="form-control">
-            <label for="animalname">Animal's Name</label>
-        </div>
-        <div class="md-form">
-<!--            <i class="fas fa-user prefix"></i>-->
-            <select class="mdb-select md-form" name="age" id="age">
-                <option value="" disabled selected>Estimate animal's age</option>
-                <option value="New born">New born</option>
-                <option value="Young">Young</option>
-                <option value="Adult">Adult</option>
-            </select>
-        </div>
-        <div class="md-form">
-<!--            <i class="fas fa-user prefix"></i>-->
-            <select class="mdb-select md-form" name="health" id="health">
-                <option value="" disabled selected>Estimate animal's health</option>
-                <option value="Ill">Ill</option>
-                <option value="Okay">Okay</option>
-                <option value="Healthy">Healthy</option>
-            </select>
-        </div>
-        <div class="md-form">
-<!--            <i class="fas fa-user prefix"></i>-->
-            <select class="mdb-select md-form" name="type" id="type">
-                <option value="" disabled selected>Animal Species</option>
-                <option value="thriving">Thriving Species</option>
-                <option value="endangered">Endangered Species</option>
-            </select>
-        </div>
+        <label for="health">Animal age</label>
+        <select class="form-control" name="age">
+            <option selected disabled>Animal's age</option>
+            <option value="Newborn">Newborn</option>
+            <option value="Young">Young</option>
+            <option value="Adult">Adult</option>
+        </select>
+        <br>
 
-        <button type="submit" class="btn btn-success">Submit</button>
+        <label for="health">Animal health</label>
+        <select class="form-control" name="health">
+            <option selected disabled>Animal's health</option>
+            <option value="Ill">Ill</option>
+            <option value="Okay">Okay</option>
+            <option value="Healthy">Healthy</option>
+        </select>
+        <br>
+
+        <label>Animal species</label>
+        <select class="form-control" name="type">
+            <option selected disabled>Animal species</option>
+            <option value="thriving">Thriving Species</option>
+            <option value="endangered">Endangered Species</option>
+        </select>
+        <br>
+        <button class="btn btn-success" type="submit">Submit</button>
     </form>
-
 {{/partial}}
 {{>layout.hbs}}
