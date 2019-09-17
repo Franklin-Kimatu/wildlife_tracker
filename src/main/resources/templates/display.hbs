@@ -8,11 +8,12 @@
             <th scope="col">Id</th>
             <th scope="col">Ranger's Name</th>
             <th scope="col">Location</th>
+            <th scope="col">Animal Species</th>
             <th scope="col">Animal Name</th>
             <th scope="col">Animal Health</th>
             <th scope="col">Animal Age</th>
 
-            <th scope="col">Animal Species</th>
+
         </tr>
         </thead>
         <tbody>
@@ -27,6 +28,8 @@
                 <td>{{location}}</td>
 
                 <!--Animal's Name-->
+                <!--Animal's Species-->
+                <td>{{type}}</td>
 
                 <td>{{animalname}}</td>
 
@@ -36,8 +39,7 @@
                 <!--Animal's Age-->
                 <td>{{age}}</td>
 
-                <!--Animal's Species-->
-                <td>{{type}}</td>
+
             </tr>
         {{/each}}
         </tbody>

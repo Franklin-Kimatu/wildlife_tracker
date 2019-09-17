@@ -6,27 +6,30 @@
     <title>{{#block "title"}}Maasai mara wildlife tracker{{/block}}</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lora|Merriweather&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
 
 <div class="color">
-    <ul class="nav nav-tabs">
-        <li role="presentation" class="active"><a href="/"><button type="button" class="btn btn-outline-dark">Home</button></a></li>
-        <li role="presentation"><a href="/new/animal"><button type="button" class="btn btn-outline-dark">Report an Animal</button></a></li>
-        <li role="presentation"><a href="/display"><button type="button" class="btn btn-outline-dark">View Recorded sightings</button></a></li>
+    <ul class="nav nav-tabs" id="nav">
+        <li role="presentation" class="active"><a href="/">Home</a></li>
+        <li role="presentation"><a href="/new/animal">Report an Animal</a></li>
+        <li role="presentation"><a href="/display">View Recorded sightings</a></li>
     </ul>
 
         <!--begin main template-->
-        <div class="page-header">
+        <div class="cover">
+            <div class="page-header">
 
-            <h1>The Mara tracker.</h1>
-        </div>
+                <h1>The Mara tracker.</h1>
+            </div>
 
-        <div class="col-md-12">
-            {{#block "content"}}
-            {{/block}}
+            <div class="col-md-12">
+                {{#block "content"}}
+                {{/block}}
 
+            </div>
         </div>
 
 </div>

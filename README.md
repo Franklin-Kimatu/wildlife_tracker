@@ -25,6 +25,7 @@ The Mara wildlife tracker is an application that helps rangers in Mara Rreserve 
 
 ## Known bugs
 * Some of the information saved in the database is not properly displayed.
+* The health and age of the thriving species is not recored in database and in the display table.
 
 
 
