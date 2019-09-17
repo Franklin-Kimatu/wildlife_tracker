@@ -1,34 +1,25 @@
-<!--{{#partial "content"}}-->
-<!--   {{#if animalname}}-->
-<!--       <p>{{rangername}}</p>-->
-<!--       <p>{{location}}</p>-->
-<!--       <p>{{animalname}}</p>-->
-<!--       <p>{{age}}</p>-->
-<!--       <p>{{type}}</p>-->
-<!--   {{/if}}-->
-<!--{{/partial}}-->
-<!--{{>layout.hbs}}-->
-
-
 {{#partial "content"}}
-    <h1>Recorded Sightings</h1>
+    <h4>Recorded Sightings</h4>
     <br>
     <br>
     <table class="table table-dark">
         <thead class="thead-dark">
         <tr>
+            <th scope="col">Id</th>
             <th scope="col">Ranger's Name</th>
             <th scope="col">Location</th>
             <th scope="col">Animal Name</th>
-            <th scope="col">Animal Age</th>
             <th scope="col">Animal Health</th>
+            <th scope="col">Animal Age</th>
+
             <th scope="col">Animal Species</th>
-            <th scope="col">Time of sighting</th>
         </tr>
         </thead>
         <tbody>
         {{#each sightings}}
             <tr>
+                <!--id-->
+                <td>{{id}}</td>
                 <!--Ranger's Name-->
                 <td>{{rangername}}</td>
 
@@ -39,18 +30,20 @@
 
                 <td>{{animalname}}</td>
 
-                <!--Animal's Age-->
-                <td>{{animal.age}}</td>
-
                 <!--Animal's Health-->
-                <td>{{animal.health}}</td>
+                <td>{{health}}</td>
+
+                <!--Animal's Age-->
+                <td>{{age}}</td>
 
                 <!--Animal's Species-->
-                <td>{{animal.type}}</td>
+                <td>{{type}}</td>
             </tr>
         {{/each}}
         </tbody>
     </table>
+
+    <a href="/"><button class="btn btn-outline-success">Go back</button></a>
 {{/partial}}
 
 {{>layout.hbs}}

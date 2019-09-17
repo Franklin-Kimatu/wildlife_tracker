@@ -1,46 +1,59 @@
+{{#partial "styles"}}
+    <link href="/css/form.css" rel="stylesheet">
+{{/partial}}
 {{#partial "content"}}
-    <form action="/display" method="post" >
-        <label for="rangername">Ranger Name:</label>
-        <input class="form-control" type="text" name="rangername" id="rangername" placeholder="Ranger's Name">
-        <br>
-        <label for="location">Location</label>
-        <select class="form-control" name="location">
-            <option selected disabled>Location</option>
-            <option value="Zone one">Zone one</option>
-            <option value="Zone two">Zone two</option>
-            <option value="Zone three">Zone three</option>
-        </select>
-        <br>
-        <label for="animalname">Animal name</label>
-        <input class="form-control" type="text" id="animalname" name="animalname">
-        <br>
+    <div class="row">
+        <div class="col-md-4">
+            <form action="/display" method="post" >
+                <label for="rangername">Ranger Name:</label>
+                <input class="form-control" type="text" name="rangername" id="rangername" placeholder="Ranger's Name">
+                <br>
+                <label for="location">Location</label>
+                <select class="form-control" name="location">
+                    <option selected disabled>Location</option>
+                    <option value="Zone one">Zone one</option>
+                    <option value="Zone two">Zone two</option>
+                    <option value="Zone three">Zone three</option>
+                </select>
+                <br>
+                <label for="animalname">Animal name</label>
+                <input class="form-control" type="text" id="animalname" name="animalname">
+                <br>
 
-        <label for="health">Animal age</label>
-        <select class="form-control" name="age">
-            <option selected disabled>Animal's age</option>
-            <option value="Newborn">Newborn</option>
-            <option value="Young">Young</option>
-            <option value="Adult">Adult</option>
-        </select>
-        <br>
+                <label for="health">Animal age</label>
+                <select class="form-control" name="age">
+                    <option selected disabled>Animal's age</option>
+                    <option value="Newborn">Newborn</option>
+                    <option value="Young">Young</option>
+                    <option value="Adult">Adult</option>
+                </select>
+                <br>
 
-        <label for="health">Animal health</label>
-        <select class="form-control" name="health">
-            <option selected disabled>Animal's health</option>
-            <option value="Ill">Ill</option>
-            <option value="Okay">Okay</option>
-            <option value="Healthy">Healthy</option>
-        </select>
-        <br>
+                <label for="health">Animal health</label>
+                <select class="form-control" name="health">
+                    <option selected disabled>Animal's health</option>
+                    <option value="Ill">Ill</option>
+                    <option value="Okay">Okay</option>
+                    <option value="Healthy">Healthy</option>
+                </select>
+                <br>
 
-        <label>Animal species</label>
-        <select class="form-control" name="type">
-            <option selected disabled>Animal species</option>
-            <option value="thriving">Thriving Species</option>
-            <option value="endangered">Endangered Species</option>
-        </select>
-        <br>
-        <button class="btn btn-success" type="submit">Submit</button>
-    </form>
+                <label>Animal species</label>
+                <select class="form-control" name="type">
+                    <option selected disabled>Animal species</option>
+                    <option value="thriving">Thriving Species</option>
+                    <option value="endangered">Endangered Species</option>
+                </select>
+                <br>
+                <button class="btn btn-success" type="submit">Submit</button>
+            </form>
+        </div>
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-4">
+
+        </div>
+    </div>
 {{/partial}}
 {{>layout.hbs}}

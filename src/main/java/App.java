@@ -28,10 +28,6 @@ public class App {
             String animalname = request.queryParams("animalname");
             String health = request.queryParams("health");
             String age =request.queryParams("age");
-            System.out.println(animalname);
-            System.out.println(health);
-            System.out.println(age);
-
             String type = request.queryParams("type");
             if (type.equals("thriving")){
                 ThrivingAnimal thrivingAnimal = new ThrivingAnimal(animalname,1);
@@ -39,8 +35,8 @@ public class App {
                 Sighting sightingOne=new Sighting(location,rangername);
                 sightingOne.save();
             }else if(type.equals("endangered")){
-                EndangeredAnimal endangeredAnimal=new EndangeredAnimal(animalname,1,health,age);
-                endangeredAnimal.save();
+                EndangeredAnimal endangeredAnimals=new EndangeredAnimal(animalname,1,health,age);
+                endangeredAnimals.save();
                 Sighting sightingTwo= new Sighting(location,rangername);
                 sightingTwo.save();
             }
@@ -48,6 +44,11 @@ public class App {
             List<ThrivingAnimal>allThrivingAnimals =ThrivingAnimal.all();
             List<EndangeredAnimal> allEndangeredAnimals =EndangeredAnimal.all();
             model.put("sightings",allSightings);
+//            model.put("rangername",rangername);
+//            model.put("animalname",animalname);
+//            model.put("health",health);
+//            model.put("age",age);
+//            model.put("type",type);
             model.put("thrivingAnimal",allThrivingAnimals);
             model.put("endangeredAnimal",allEndangeredAnimals);
             return new ModelAndView(model,"display.hbs");
@@ -62,23 +63,7 @@ public class App {
         },new HandlebarsTemplateEngine());
 
 
-//        get("/form",(request, response) -> {
-//            Map<String,Object>model = new HashMap<>();
-//            return new ModelAndView(model,"form.hbs");
-//        }, new HandlebarsTemplateEngine());
-////
-//        get("/new/animal",(request, response) -> {
-//            Map<String,Object>model = new HashMap<>();
-//            String animalname = request.queryParams("animalname");
-//            String health =request.queryParams("health");
-//            String age =request.queryParams("age");
-//            String rangername = request.queryParams("rangername");
-//            model.put("age",age);
-//            model.put("health",health);
-//            model.put("animalname",animalname);
-//            model.put("rangername",rangername);
-//            return  new ModelAndView(model,"display.hbs");
-//        },new HandlebarsTemplateEngine());
+
 
     }
 }

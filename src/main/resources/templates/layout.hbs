@@ -1,65 +1,20 @@
-<!--<!DOCTYPE html>-->
-<!--<html>-->
-<!--<head>-->
-<!--    <title>{{#block "title"}}WildlifeTracker{{/block}}</title>-->
 
-<!--&lt;!&ndash;        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">&ndash;&gt;-->
-<!--&lt;!&ndash;        &lt;!&ndash; Bootstrap core CSS &ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">&ndash;&gt;-->
-<!--&lt;!&ndash;        &lt;!&ndash; Material Design Bootstrap &ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;        <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.9/css/mdb.min.css" rel="stylesheet">&ndash;&gt;-->
-<!--&lt;!&ndash;        <link rel="stylesheet" href="/css/styles.css">&ndash;&gt;-->
-<!--&lt;!&ndash;        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>&ndash;&gt;-->
-<!--&lt;!&ndash;        &lt;!&ndash; Bootstrap tooltips &ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>&ndash;&gt;-->
-<!--&lt;!&ndash;        &lt;!&ndash; Bootstrap core JavaScript &ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>&ndash;&gt;-->
-<!--&lt;!&ndash;        &lt;!&ndash; MDB core JavaScript &ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.9/js/mdb.min.js"></script>&ndash;&gt;-->
-<!--            <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.9/css/mdb.min.css" rel="stylesheet">-->
-
-<!--    <link rel="stylesheet" href="/css/styles.css">-->
-<!--</head>-->
-<!--<body>-->
-
-<!--<div class="color">-->
-<!--    <ul class="nav nav-tabs">-->
-<!--        <li role="presentation"><a href="/">Home</a></li>-->
-<!--        <li role="presentation"><a href="/new/animal">Report an animal</a></li>-->
-
-<!--    </ul>-->
-<!--    <div class="container">-->
-<!--        &lt;!&ndash;begin main template&ndash;&gt;-->
-
-
-<!--        <div class="col-md-12">-->
-<!--            {{#block "content"}}-->
-<!--            {{/block}}-->
-
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-<!--&lt;!&ndash;end main template&ndash;&gt;-->
-<!--{{#block "footer"}}-->
-
-<!--    </body>-->
-<!--    </html>-->
-<!--{{/block}}-->
 
 <!DOCTYPE html>
 <html>
 <head>
     <title>{{#block "title"}}Maasai mara wildlife tracker{{/block}}</title>
 
-    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
 
 <div class="color">
     <ul class="nav nav-tabs">
-        <li role="presentation" class="active"><a href="/">Home</a></li>
-        <li role="presentation"><a href="/new/animal">Report an animal</a></li>
+        <li role="presentation" class="active"><a href="/"><button type="button" class="btn btn-outline-dark">Home</button></a></li>
+        <li role="presentation"><a href="/new/animal"><button type="button" class="btn btn-outline-dark">Report an Animal</button></a></li>
+        <li role="presentation"><a href="/display"><button type="button" class="btn btn-outline-dark">View Recorded sightings</button></a></li>
     </ul>
 
         <!--begin main template-->
