@@ -21,7 +21,9 @@ public class EndangeredAnimal extends Animal {
             String sql ="SELECT *FROM animals where id =:id";
             EndangeredAnimal animal =con.createQuery(sql).addParameter("id",id).executeAndFetchFirst(EndangeredAnimal.class);
             return animal;
+
         }
+
     }
 
     public static List<EndangeredAnimal> all(){

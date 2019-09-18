@@ -72,5 +72,6 @@ public class Sighting {
             allAnimals.addAll(endangeredAnimals);
         }
         return allAnimals;
+
     }
 }

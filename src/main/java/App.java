@@ -42,7 +42,6 @@ public class App {
             String health = request.queryParams("health");
             String age =request.queryParams("age");
             String type = request.queryParams("type");
-
             if (type.equals("thriving")){
                 ThrivingAnimal thrivingAnimal = new ThrivingAnimal(animalname,1);
                 thrivingAnimal.save();
@@ -58,11 +57,6 @@ public class App {
             List<ThrivingAnimal>allThrivingAnimals =ThrivingAnimal.all();
             List<EndangeredAnimal> allEndangeredAnimals =EndangeredAnimal.all();
             model.put("sightings",allSightings);
-//            model.put("rangername",rangername);
-//            model.put("animalname",animalname);
-//            model.put("health",health);
-//            model.put("age",age);
-//            model.put("type",type);
             model.put("thrivingAnimal",allThrivingAnimals);
             model.put("endangeredAnimal",allEndangeredAnimals);
             return new ModelAndView(model,"display.hbs");
@@ -73,11 +67,9 @@ public class App {
             model.put("sightings",Sighting.all());
             model.put("thrivingAnimal",ThrivingAnimal.all());
             model.put("endangeredAnimal",EndangeredAnimal.all());
+            System.out.println(ThrivingAnimal.all());
             return new ModelAndView(model,"display.hbs");
         },new HandlebarsTemplateEngine());
-
-
-
 
     }
 }
