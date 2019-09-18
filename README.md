@@ -5,7 +5,7 @@
 * Lastborn Tech. Company.
 ## Description
 The Mara wildlife tracker is an application that helps rangers in Mara Rreserve to report and record the animals and species(endangered or Thriving) into a database.
-* The information is saved in the database for record keeping.
+* The information is saved in the database for record keeping.Click [here](https://marawildlifetracker.herokuapp.com/) to view
 ## Setup instructions
 ##### Here are the instructions for re-creating the database.
 
